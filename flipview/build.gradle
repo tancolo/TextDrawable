@@ -19,8 +19,17 @@ android {
     }
 }
 
+//add maven repositories
+repositories{
+    maven {
+        url 'http://dl.bintray.com/amulyakhare/maven'
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:design:23.0.1'
+    //add textdrawable
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 }
