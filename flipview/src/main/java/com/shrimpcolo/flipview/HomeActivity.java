@@ -8,8 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 public class HomeActivity extends AppCompatActivity {
+    private final static String TAG = "shrimpcolo";
+
+    private ListView mListView;
+    private SampleAdapter mSampleAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,11 @@ public class HomeActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        // init the list view and its adapter
+        mListView = (ListView) findViewById(R.id.lv_container);
+        mSampleAdapter = new SampleAdapter(this);
+        mListView.setAdapter(mSampleAdapter);
     }
 
     @Override
