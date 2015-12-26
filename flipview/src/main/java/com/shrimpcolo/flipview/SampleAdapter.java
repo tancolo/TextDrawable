@@ -3,6 +3,7 @@ package com.shrimpcolo.flipview;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -30,7 +31,12 @@ public class SampleAdapter extends BaseAdapter {
     private Animation flipAnim1;
     private Animation flipAnim2;
     private ImageView mFlipView;
-    private ViewHolder mViewHold = null;
+    //private ViewHolder mViewHold = null;
+
+    private int checkedCount = 0;
+    private boolean isActionModeShowing;
+    private ActionMode mMode;
+    private HomeActivity.ActionModeTop mActModeCallback;
 
     // declare the color generator and drawable builder
     private ColorGenerator mColorGenerator;
@@ -46,6 +52,20 @@ public class SampleAdapter extends BaseAdapter {
         flipAnim1 = AnimationUtils.loadAnimation(mContext, R.anim.flip_anim_to_middle);
         flipAnim2 = AnimationUtils.loadAnimation(mContext, R.anim.flip_anim_from_middle);
 
+        isActionModeShowing = false;
+    }
+
+    SampleAdapter(Context context, HomeActivity.ActionModeTop callback) {
+        mContext = context;
+        mActModeCallback = callback;
+
+        mColorGenerator = ColorGenerator.MATERIAL;
+        mDrawableBuilder = TextDrawable.builder().round();
+
+        flipAnim1 = AnimationUtils.loadAnimation(mContext, R.anim.flip_anim_to_middle);
+        flipAnim2 = AnimationUtils.loadAnimation(mContext, R.anim.flip_anim_from_middle);
+
+        isActionModeShowing = false;
     }
 
     // list of data items
@@ -116,16 +136,8 @@ public class SampleAdapter extends BaseAdapter {
                 }catch (NullPointerException exp){
                     Log.e(TAG, exp.getMessage());
                 }
-
-
-                // when the image is clicked, update the selected state
-//                ListData data = getItem(position);
-//                data.setChecked(!data.isChecked);
-//                updateCheckedState(holder, data);
             }
         });
-
-
         return convertView;
     }
 
@@ -135,10 +147,10 @@ public class SampleAdapter extends BaseAdapter {
 
             @Override
             public void onAnimationStart(Animation animation) {
-                Log.e(TAG, "\n  onAnimationStart = " + animation);
+                //Log.e(TAG, "\n  onAnimationStart = " + animation);
 
                 if (animation == flipAnim1) {
-                    Log.e(TAG, "curListData.isChecked = " + curListData.isChecked);
+                    //Log.e(TAG, "curListData.isChecked = " + curListData.isChecked);
 
                     if (curListData.isChecked) {
                         //mFlipView.setImageResource(R.drawable.cb_unchecked);
@@ -155,44 +167,45 @@ public class SampleAdapter extends BaseAdapter {
                     mFlipView.setAnimation(flipAnim2);
                     mFlipView.startAnimation(flipAnim2);
                 } else {
-                    Log.e(TAG, "\n  onAnimationStart animation != flipAnim1");
+                   // Log.e(TAG, "\n  onAnimationStart animation != flipAnim1");
                     curListData.setChecked(!curListData.isChecked);
-//                    setCount();
-//                    setActionMode();
+                    setCount();
+                    setActionMode();
                 }
             }
 
             // Set selected count
-//            private void setCount() {
-//                if (curListData.isChecked()) {
-//                    checkedCount++;
-//                } else {
-//                    if (checkedCount != 0) {
-//                        checkedCount--;
-//                    }
-//                }
-//
-//            }
+            private void setCount() {
+                if (curListData.isChecked) {
+                    checkedCount++;
+                } else {
+                    if (checkedCount != 0) {
+                        checkedCount--;
+                    }
+                }
+            }
 
             // Show/Hide action mode
-//            private void setActionMode() {
-//                if (checkedCount > 0) {
-//                    if (!isActionModeShowing) {
-//                        mMode = ((MainActivity) context).startActionMode(new MainActivity.AnActionModeOfEpicProportions(context));
-//                        isActionModeShowing = true;
-//                    }
-//                } else if (mMode != null) {
-//                    mMode.finish();
-//                    isActionModeShowing = false;
-//                }
-//
-//                // Set action mode title
-//                if (mMode != null)
-//                    mMode.setTitle(String.valueOf(checkedCount));
-//
-//                notifyDataSetChanged();
-//
-//            }
+            private void setActionMode() {
+                Log.e(TAG, "setActionMode()-> checkedCount: " + checkedCount);
+
+                if (checkedCount > 0) {
+                    if (!isActionModeShowing) {
+                        mMode = ((HomeActivity)mContext).startActionMode(mActModeCallback);
+                        isActionModeShowing = true;
+                    }
+                } else if (mMode != null) {
+                    mMode.finish();
+                    isActionModeShowing = false;
+                }
+
+                // Set action mode title
+                if (mMode != null)
+                    mMode.setTitle(String.valueOf(checkedCount));
+
+                notifyDataSetChanged();
+
+            }
 
             @Override
             public void onAnimationRepeat(Animation arg0) {
