@@ -9,8 +9,8 @@
 
 ###效果图
 <p align="center">
-<img src = "https://github.com/tancolo/TextDrawable/tree/dev/screens/Screenshot_05.png" width="350"/>
-<img src = "https://github.com/tancolo/TextDrawable/tree/dev/screens/Screenshot_06.png" width="350"/>
+<img src = "https://github.com/tancolo/TextDrawable/blob/dev/screens/Screenshot_05.png" width="350"/>
+<img src = "https://github.com/tancolo/TextDrawable/blob/dev/screens/Screenshot_06.png" width="350"/>
 </p>
 
 ###目录结构说明
