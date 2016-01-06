@@ -1,11 +1,60 @@
-###TextDrawable 
-This light-weight library provides images with letter/text like the Gmail app. It extends the `Drawable` class thus can be used with existing/custom/network `ImageView` classes. Also included is a [fluent interface](http://en.wikipedia.org/wiki/Fluent_interface) for creating drawables and a customizable `ColorGenerator`.
+###TextDrawable 实现 Gmail邮箱选中翻转效果
 
-<p align="center"><img src ="https://github.com/amulyakhare/TextDrawable/blob/master/screens/screen1-material.png" width="350"/>
-<img src ="https://github.com/amulyakhare/TextDrawable/blob/master/screens/screen2-material.png" width="350"/>
-</p>
+作者: shrimpcolo Email: shrimpcolo@gmail.com
 
-###How to use
+本项目Fork自amulyakhare/TextDrawable，并在其基础上实现 类似Gmail邮箱选中翻转效果。
+主要目的如下:
+- 学习使用TextDrawable
+- 基于TextDrawable实现Gmail邮箱选中翻转效果
+
+###效果图
+To be Implemented.
+
+###目录结构说明
+- library       TextDrawable源码库
+- sample        原作者的sample
+- flipview      本人实现的Demo
+- sample-apk    apk文件目录
+
+master分支是fork原始分支，不做任何修改，仅仅是为同步作者后续可能的修改。
+dev分支是个人学习分支，涉及：
+- 如何集成TextDrawable到flipview独立工程中.
+- 如何实现TextDrawable的自动翻转，达到类似Gmail翻转效果.
+- 如何使用ActionMode添加actionbar，达到多选并显示数字.
+- 如何修改ActionBar 背景颜色，title字体颜色, 添加ActionBar Menu.
+
+###集成环境说明
+- Android Studio1.4
+- compileSdkVersion 23, minSdkVersion 15.
+- gradle 2.2
+
+###如何集成TextDrawable
+TextDrawable是原作者写的小库，用各种图形显示文本信息。可以直接使用库文件代码或是使用Android Studio的
+依赖集成。
+在build.gradle（flipview文件夹）中添加如下内容：
+```
+    //add maven repositories
+    repositories{
+        maven {
+            url 'http://dl.bintray.com/amulyakhare/maven'
+        }
+    }
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile 'com.android.support:appcompat-v7:23.0.1'
+        compile 'com.android.support:design:23.0.1'
+        //add textdrawable
+        compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    }
+```
+
+
+###类gmail动画翻转
+
+###添加ActionBar
+
+###修改ActionBar
 
 #### Import with Gradle:
 
