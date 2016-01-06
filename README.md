@@ -8,7 +8,10 @@
 - 基于TextDrawable实现Gmail邮箱选中翻转效果
 
 ###效果图
-To be Implemented.
+<p align="center">
+<img src = "https://github.com/tancolo/TextDrawable/tree/dev/screens/Screenshot_05.png" width="350"/>
+<img src = "https://github.com/tancolo/TextDrawable/tree/dev/screens/Screenshot_06.png" width="350"/>
+</p>
 
 ###目录结构说明
 - library       TextDrawable源码库
