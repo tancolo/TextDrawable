@@ -481,6 +481,8 @@ SmapleAdapter.java
         <item name="windowActionModeOverlay">true</item>
     </style>
 ```
-
+<p align="center">
+<img src = "https://github.com/tancolo/TextDrawable/blob/dev/screens/Screenshot_07.png" width="350"/>
+</p>
 ###修改ActionBar
 
