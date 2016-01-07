@@ -2,6 +2,13 @@
 
 作者: shrimpcolo Email: shrimpcolo@gmail.com
 
+<p align="center">
+<font color="#ff0000">
+如果您觉得对您有帮助，请为我加星，非常感谢！<br>
+</font>
+<img src = "https://github.com/tancolo/TextDrawable/blob/dev/screens/add_star.png" width="400"/>
+</p>
+
 本项目Fork自amulyakhare/TextDrawable，并在其基础上实现 类似Gmail邮箱选中翻转效果。
 主要目的如下:
 - 学习使用TextDrawable
